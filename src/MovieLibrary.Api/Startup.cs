@@ -26,6 +26,7 @@ namespace MovieLibrary.Api
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Movie library API", Version = "v1" });
             });
+            services.AddControllers();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

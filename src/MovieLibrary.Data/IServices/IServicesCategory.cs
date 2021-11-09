@@ -9,9 +9,10 @@ namespace MovieLibrary.Data
     interface IServicesCategory<TEntity>
         where TEntity : Category
     {
-        Task<TEntity> CreateAsync(TEntity entity);
-        Task<TEntity> ReadAsync(TEntity entity, bool tracking = true);
-        Task<TEntity> UpdateAsync(int id, TEntity updateEntity);
-        Task<TEntity> DeleteAsync(int id);
+        void Create(TEntity entity);
+        TEntity Read(int id);
+        IEnumerable<TEntity> GetAll();
+        void Update(int id, TEntity updateEntity);
+        void Delete(int id);
     }
 }
