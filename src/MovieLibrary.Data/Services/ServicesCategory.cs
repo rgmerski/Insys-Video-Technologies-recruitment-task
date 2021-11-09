@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 
 namespace MovieLibrary.Data
 {
-    [Microsoft.AspNetCore.Mvc.Route("/v1/CategoriesManagement/[controller]")]
-    [Controller]
     abstract class ServicesCategory<TEntity> : ControllerBase, IServicesCategory<TEntity>
         where TEntity : Category
     {
@@ -22,7 +20,6 @@ namespace MovieLibrary.Data
             _movieLibraryContext = movieLibraryContext;
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpPost]
         public void Create(TEntity entity)
         {
             if (entity != null)
@@ -32,19 +29,16 @@ namespace MovieLibrary.Data
             }
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpGet("{id}", Name = "Get")]
         public TEntity Read(int id)
         {
             return (TEntity)_movieLibraryContext.Categories.SingleOrDefault(p => p.Id == id);
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpGet]
         public IEnumerable<TEntity> GetAll()
         {
             return (IEnumerable<TEntity>)_movieLibraryContext.Movies.ToList();
         }
 
-        [Microsoft.AspNetCore.Mvc.HttpPut("{id}")]
         public void Update(int id, TEntity updateEntity)
         {
             var entity = Read(id);
@@ -58,7 +52,7 @@ namespace MovieLibrary.Data
             //_movieLibraryContext.Entry(updateEntity).State = EntityState.Modified;
             _movieLibraryContext.SaveChanges();
         }
-        [Microsoft.AspNetCore.Mvc.HttpDelete("{id}")]
+
         public void Delete(int id)
         {
             var entity = Read(id);

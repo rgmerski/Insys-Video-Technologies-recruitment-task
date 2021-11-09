@@ -71,7 +71,33 @@ namespace MovieLibrary.Api.Endpoints
 
             return sorted;
         }
-        [HttpGet("rating")]
+
+        //[HttpGet("{categories}")]
+        //[ActionName("GetCategories")]
+        //public async Task<ActionResult<IEnumerable<Movie>>> Categories(int[] categories)
+        //{
+        //    List<Movie> movies = new List<Movie>();
+        //    foreach (var item in categories)
+        //    {
+        //        var movcat = await _context.MovieCategories.Where(x => x.CategoryId == item).ToListAsync();
+        //        foreach (var id in movcat)
+        //        {
+        //            var movie = await _context.Movies.Where(x => x.Id == id.MovieId).ToListAsync();
+        //            movies.Add(movie);
+        //        }
+        //    }
+
+        //    if (movies == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    List<Movie> sorted = movies.OrderByDescending(x => x.ImdbRating).ToList();
+        //    // fill Categories array searching MovieCategory entities with matching MovieId
+
+        //    return sorted;
+        //}
+
+        [HttpGet("{rating}")]
         [ActionName("GetRating")]
         public async Task<ActionResult<IEnumerable<Movie>>> Rating(decimal minImdb, decimal maxImdb)
         {
